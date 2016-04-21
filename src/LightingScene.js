@@ -22,6 +22,10 @@ LightingScene.prototype.init = function(application) {
 	
 	this.initLights();
 
+	this.option1=true;
+	this.option2=false;
+ 	this.speed=3;
+
 	
 
 	this.gl.clearColor(0.0, 0.0, 0.0, 1.0);
