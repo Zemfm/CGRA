@@ -148,6 +148,11 @@ LightingScene.prototype.update = function(currTime) {
 	this.clock.update(currTime);
 }
 
+LightingScene.prototype.doSomething = function ()
+{ 
+	console.log("Doing something..."); 
+};
+
 
 LightingScene.prototype.display = function() {
 
