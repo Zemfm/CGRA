@@ -255,9 +255,12 @@ LightingScene.prototype.display = function() {
 	//Drone
 	this.pushMatrix();
 	this.translate(7.5,4,7.5);
+	//this.translate(x,y,z);
+	//this.rotate(angulo,x,y,z);
 	this.rotate(200*degToRad,0,1,0);
 	this.drone.display();
 	this.popMatrix();
+
 
 	// ---- END Primitive drawing section
 };
