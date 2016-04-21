@@ -41,10 +41,10 @@ LightingScene.prototype.init = function(application) {
 	this.wall = new MyQuad(this,0, 1, 0, 1);
 	this.left_wall= new MyQuad(this,-0.5, 1.5, -0.5, 1.5);
 	this.floor = new MyQuad(this,0,10,0,12);
-	this.clock= new MyClock(this,12,1);
-	
+	this.clock= new MyClock(this,12,1);	
 	this.boardA = new Plane(this, BOARD_A_DIVISIONS, -0.25, 1.25,0, 1);
 	this.boardB = new Plane(this, BOARD_B_DIVISIONS, 0, 1, 0, 1);
+	this.drone= new MyDrone(this);
 
 	// Materials
 	this.materialDefault = new CGFappearance(this);
@@ -210,18 +210,21 @@ LightingScene.prototype.display = function() {
 	this.pushMatrix();
 		this.translate(7.5, 4, 0);
 		this.scale(15, 8, 0.2);
+		this.materialDefault.apply();
 		this.wall.display();
 	this.popMatrix();
 
 	// First Table
 	this.pushMatrix();
 		this.translate(5, 0, 8);
+		this.materialDefault.apply();
 		this.table.display();
 	this.popMatrix();
 
 	// Second Table
 	this.pushMatrix();
 		this.translate(12, 0, 8);
+		this.materialDefault.apply();
 		this.table.display();
 	this.popMatrix();
 
@@ -247,6 +250,13 @@ LightingScene.prototype.display = function() {
 	this.pushMatrix();
 	this.translate(7.25,7.5,0.2);
 	this.clock.display();
+	this.popMatrix();
+
+	//Drone
+	this.pushMatrix();
+	this.translate(7.5,4,7.5);
+	this.rotate(200*degToRad,0,1,0);
+	this.drone.display();
 	this.popMatrix();
 
 	// ---- END Primitive drawing section
