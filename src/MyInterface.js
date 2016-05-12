@@ -43,7 +43,7 @@ MyInterface.prototype.init = function(application) {
 	
 	// add a slider
 	// must be a numeric variable of the scene, initialized in scene.init e.g.
-	// this.speed=3;
+	//this.speed=3;
 	// min and max values can be specified as parameters
 	
 	this.gui.add(this.scene, 'speed', -5, 5);
@@ -65,8 +65,29 @@ MyInterface.prototype.processKeyboard = function(event) {
 	// for better cross-browser support, you may also check suggestions on using event.which in http://www.w3schools.com/jsref/event_key_keycode.asp
 	switch (event.keyCode)
 	{
-		case (65 || 97):	// only works for capital 'A', as it is
-			console.log("Key 'A' pressed");
-	};
+		case (119):	//move forward 
+			this.scene.drone.moveForward(this.scene.speed);
+			break;
+
+		case(115): //move bacward
+			this.scene.drone.moveBackward(this.scene.speed);
+			break;
+
+		case(97): //rotate left
+			this.scene.drone.rotateLeft(this.scene.speed);
+			break;
+
+		case(100): //rotate right
+			this.scene.drone.rotateRight(this.scene.speed);
+			break;
+
+		case(105):  //up
+			this.scene.drone.moveUp(this.scene.speed);
+			break;
+
+		case(106):	//down
+			this.scene.drone.moveDown(this.scene.speed);
+			break;
+	};	
 };
 
