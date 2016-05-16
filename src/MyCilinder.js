@@ -29,12 +29,12 @@
 	{
 		for (var slice = 0; slice < this.slices; slice++)
 		{
-		this.vertices.push(Math.cos(slice * angle), Math.sin(slice * angle), stack / this.stacks);
-		this.normals.push(Math.cos(slice * angle), Math.sin(slice * angle),0);
+		this.vertices.push(Math.cos(slice * angle), Math.sin(slice * angle), stack); // this.stacks);
+		this.normals.push(Math.cos(slice * angle), Math.sin(slice * angle),stack);
 		}
 	}
 
-	for (var stack = 0; stack < this.stacks; stack++)
+	for (var stack = 0; stack < this.stacks ; stack++)
 	{
 		for (var slice = 0; slice < this.slices; slice++)
 		{
@@ -50,6 +50,8 @@
 			}
 		}
 	}
+
+
 
  	this.primitiveType = this.scene.gl.TRIANGLES;
  	this.initGLBuffers();

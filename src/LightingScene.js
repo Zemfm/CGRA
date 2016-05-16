@@ -140,8 +140,15 @@ LightingScene.prototype.initLights = function() {
 };
 
 LightingScene.prototype.updateLights = function() {
+	
+	if(this.option1)
+		this.lights[0].enable();	
+	else
+		this.lights[0].disable();
+
 	for (i = 0; i < this.lights.length; i++)
 		this.lights[i].update();
+		
 }
 
 LightingScene.prototype.update = function(currTime) {

@@ -11,6 +11,10 @@ var degToRad = Math.PI / 180.0;
 	this.y=0;
 	this.z=0;
 	this.yRot=200*degToRad;
+	this.slices = 12;
+	this.stacks = 2;
+	this.cilinder1 = new MyCylinder(this.scene,this.slices, this.stacks);
+	this.cilinder2 = new MyCylinder(this.scene,this.slices, this.stacks);
 
 	this.initBuffers();
 };
@@ -18,9 +22,26 @@ var degToRad = Math.PI / 180.0;
 MyDrone.prototype = Object.create(CGFobject.prototype);
 MyDrone.prototype.constructor=MyDrone;
 
-MyDrone.prototype.initBuffers = function() {
+MyDrone.prototype.display = function() {
+
+	
+	//cilinder1
+	this.scene.pushMatrix();
+	this.scene.scale(0.25,0.25,1);
+    this.cilinder1.display();
+    this.scene.popMatrix();
+
+
+	//cilinder2
+	this.scene.pushMatrix();
+	this.scene.translate(-this.stacks/4,0,(this.stacks/4));
+	this.scene.scale(0.5,0.5,0.25);
+	this.scene.rotate(90*degToRad,0,1,0);
+    this.cilinder1.display();
+    this.scene.popMatrix();
+	
     
-	this.vertices = [
+	/*this.vertices = [
             0.5, 0.3, 0,
             -0.5, 0.3, 0,
             0, 0.3, 2
@@ -36,7 +57,7 @@ MyDrone.prototype.initBuffers = function() {
 	0,1,0              
 ];
 	this.primitiveType=this.scene.gl.TRIANGLES;
-	this.initGLBuffers();
+	this.initGLBuffers();*/
 };
 
 MyDrone.prototype.moveForward=function(speed){
